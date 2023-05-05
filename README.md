@@ -15,6 +15,7 @@ A simple and futuristic design using AwesomeWM and polybar
 - Neofetch
 - Cava
 - tty-clock
+- mpv as youtube music player
 
 
 ## Authors
