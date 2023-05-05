@@ -1,0 +1,155 @@
+[colors]
+background = #aa171421
+background-alt = #201D21
+foreground = #C8C3C7
+accent = #6D8F8A
+
+[bar/main]
+width = 99%
+height = 20px
+radius = 2
+;bottom = true
+top = true
+
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2px
+
+border-size = 3px
+border-color = ${colors.background}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+offset-x = 5
+offset-y = 10
+
+font-0 = Iosevka:style=Regular:pixelsize=12;4
+font-1 = feather:style=Regular:pixelsize=12;4
+font-2 = feather\-font\-addon:style=Regular:pixelsize=12;4
+
+modules-left = cpu filesystem mplayer
+modules-center = xworkspaces
+modules-right = pulseaudio ram weather date time 
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+wm-restack = bspwm
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 40
+;format-background = ${colors.background-alt}
+format-padding = 1
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = "●"
+label-active-foreground = ${colors.foreground}
+label-active-underline = ${colors.accent}
+label-active-padding = 1
+
+label-urgent = "●"
+label-urgent-foreground = ${colors.foreground}
+label-urgent-underline = ${colors.accent}
+label-urgent-padding = 1
+
+label-empty = "○"
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
+
+label-occupied = "●"
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+[module/time]
+type = internal/date
+interval = 5
+time = " %H:%M"
+label = %time%
+;format-background = ${colors.background-alt}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+date = " %A, %d %B"
+label = %date%
+;format-background = ${colors.background-alt}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+;[module/weather]
+;type = custom/script
+;exec = ~/.config/polybar/weather
+;interval = 600
+;label-font = 0
+;format-foreground = ${colors.foreground}
+;format-background = ${colors.background-alt}
+;format-padding = 1
+
+[module/ram]
+type = internal/memory
+interval = 1
+label = RAM %percentage_used%%
+format-foreground = ${colors.foreground}
+;format-background = ${colors.background-alt}
+format-padding = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+label = CPU %percentage%%
+format-foreground = ${colors.foreground}
+;format-background = ${colors.background-alt}
+format-padding = 1
+label-minlen = 7
+
+;[module/launcher]
+;type = custom/script
+;exec = echo ""
+;click-left = ~/.config/rofi/powermenu
+;click-middle = ~/.config/rofi/screenshot
+;click-right = rofi -show drun
+;format-foreground = ${colors.background}
+;format-background = ${colors.accent}
+;format-padding = 1
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+interval = 30
+label-mounted = DISK at %percentage_used%%
+format-mounted-foreground = ${colors.foreground}
+;format-mounted-background = ${colors.background-alt}
+format-mounted-padding = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+label-volume = "VOL %percentage%%"
+interval = 5
+format-volume = <label-volume>
+label-volume-foreground = ${colors.foreground}
+;label-volume-background = ${colors.background-alt}
+;label-volume-padding = 1
+label-colume-padding-right = 1
+label-volume-padding-left = 1
+
+[module/mplayer]
+type = custom/script
+excec = ~/.config/polybar/tizonia.sh
+interval = 5
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
